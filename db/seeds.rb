@@ -28,3 +28,4 @@ post2 = user2.posts.create!(
 
 post1.comments.create!(body: "Great post!", user: user2)
 post2.comments.create!(body: "I agree with you!", user: user1)
+ 
