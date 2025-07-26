@@ -2,13 +2,15 @@ class CommentsController < ApplicationController
   def create
     @post = Post.friendly.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
-    @comment.user_id = params[:comment][:user_id] # Manual user ID for now
 
-    if @comment.save
-      redirect_to @post, notice: "Comment added!"
-    else
-      redirect_to @post, alert: "Comment couldn't be saved."
+  if @comment.save
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to @post, notice: "Comment was successfully posted." }
     end
+  else
+    redirect_to @post, alert: "Comment could not be posted."
+  end
   end
 
   def destroy

@@ -1,0 +1,12 @@
+<turbo-stream target="comments" action="replace">
+  <template>
+    <h2 class="text-xl font-semibold text-gray-900 mb-4">Comments (<%= @post.comments.count %>)</h2>
+
+    <% @post.comments.each do |comment| %>
+      <div class="mb-4 border-b pb-3">
+        <p class="text-sm text-gray-600"><%= comment.user.name %> said:</p>
+        <p class="text-gray-800"><%= comment.body %></p>
+      </div>
+    <% end %>
+  </template>
+</turbo-stream>
