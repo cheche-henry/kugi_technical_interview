@@ -1,10 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<%= link_to "← Back", posts_path, class: "text-blue-700 hover:underline mb-4 inline-block" %>
 
-<%= render @post %>
+<div class="bg-white p-6 rounded shadow">
+  <h1 class="text-3xl font-bold mb-2"><%= @post.title %></h1>
+  <p class="text-sm text-gray-500 mb-4">By <%= @post.user.name %></p>
 
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
+  <% if @post.image_url.present? %>
+    <img src="<%= @post.image_url %>" alt="Blog Image" class="rounded mb-4 w-full max-h-96 object-cover">
+  <% end %>
 
-  <%= button_to "Destroy this post", @post, method: :delete %>
+  <p class="text-gray-800 leading-relaxed"><%= simple_format(@post.body) %></p>
 </div>
