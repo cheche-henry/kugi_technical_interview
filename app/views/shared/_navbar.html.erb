@@ -1,15 +1,25 @@
-<nav class="bg-white shadow">
-  <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-    <div class="flex items-center space-x-4">
-      <a href="/" class="text-xl font-semibold text-gray-800 hover:text-gray-600">RailsBlog</a>
-      <%= link_to "Home", root_path, class: "text-gray-600 hover:text-blue-600 transition" %>
-      <%= link_to "Write Blog", new_post_path, class: "text-gray-600 hover:text-blue-600 transition" %>
-      <%= link_to "All Blogs", posts_path, class: "text-gray-600 hover:text-blue-600 transition" %>
-    </div>
-    <div class="flex space-x-4">
-      <a href="#" class="text-gray-600 hover:text-blue-600"><i class="fab fa-twitter"></i></a>
-      <a href="#" class="text-gray-600 hover:text-blue-600"><i class="fab fa-facebook"></i></a>
-      <a href="#" class="text-gray-600 hover:text-blue-600"><i class="fab fa-instagram"></i></a>
+<nav class="bg-white shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      <div class="flex items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <i class="fas fa-blog text-primary text-2xl mr-2"></i>
+          <span class="text-xl font-bold text-gray-900">RailsBlog</span>
+        </div>
+        <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+          <%= link_to "Home", root_path, class: "border-primary text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" %>
+          <%= link_to "Write Blog", new_post_path, class: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" %>
+          <%= link_to "All Blogs", posts_path, class: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" %>
+        </div>
+      </div>
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <%= link_to new_post_path, class: "relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary" do %>
+            <i class="fas fa-plus mr-2"></i>
+            New Post
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
