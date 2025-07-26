@@ -1,0 +1,15 @@
+<%= form_with(model: [post, comment]) do |f| %>
+  <div class="mb-4">
+    <%= f.label :body, "Add a Comment", class: "block text-sm font-medium text-gray-700" %>
+    <%= f.text_area :body, rows: 3, class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm" %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :user_id, "Your User ID", class: "block text-sm font-medium text-gray-700" %>
+    <%= f.number_field :user_id, class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm" %>
+  </div>
+
+  <div>
+    <%= f.submit "Post Comment", class: "inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700" %>
+  </div>
+<% end %>

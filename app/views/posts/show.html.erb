@@ -13,35 +13,13 @@
     <%= simple_format(@post.body) %>
   </div>
 
+  <!-- Comments Section -->
   <turbo-frame id="comments">
-  <h2 class="text-xl font-semibold text-gray-900 mb-4">Comments (<%= @post.comments.count %>)</h2>
+    <%= render partial: "posts/comments", locals: { post: @post } %>
+  </turbo-frame>
 
-  <% @post.comments.each do |comment| %>
-    <div class="mb-4 border-b pb-3">
-      <p class="text-sm text-gray-600"><%= comment.user.name %> said:</p>
-      <p class="text-gray-800"><%= comment.body %></p>
-    </div>
-  <% end %>
-</turbo-frame>
-
-
-    <!-- Comment Form -->
-    <div class="mt-6">
-      <%= form_with(model: [@post, Comment.new]) do |f| %>
-        <div class="mb-4">
-          <%= f.label :body, "Add a Comment", class: "block text-sm font-medium text-gray-700" %>
-          <%= f.text_area :body, rows: 3, class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm" %>
-        </div>
-
-        <div class="mb-4">
-          <%= f.label :user_id, "Your User ID", class: "block text-sm font-medium text-gray-700" %>
-          <%= f.number_field :user_id, class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm" %>
-        </div>
-
-        <div>
-          <%= f.submit "Post Comment", class: "inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700" %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+  <!-- Comment Form -->
+  <turbo-frame id="new_comment" class="mt-6">
+    <%= render "comments/form", post: @post, comment: Comment.new %>
+  </turbo-frame>
 </div>

@@ -1,17 +1,22 @@
 class CommentsController < ApplicationController
   def create
-    @post = Post.friendly.find(params[:post_id])
-    @comment = @post.comments.build(comment_params)
+  @post = Post.friendly.find(params[:post_id])
+  @comment = @post.comments.build(comment_params)
 
   if @comment.save
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to @post, notice: "Comment was successfully posted." }
+      format.html { redirect_to @post, notice: "Comment added." }
     end
   else
-    redirect_to @post, alert: "Comment could not be posted."
+    render turbo_stream: turbo_stream.replace(
+      "new_comment",
+      partial: "comments/form",
+      locals: { post: @post, comment: @comment }
+    )
   end
-  end
+end
+
 
   def destroy
     @post = Post.friendly.find(params[:post_id])
