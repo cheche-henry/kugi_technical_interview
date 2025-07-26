@@ -1,40 +1,44 @@
 <%= form_with(model: post, local: true) do |form| %>
-  <div class="space-y-6">
+  <div class="max-w-3xl mx-auto bg-white p-8 shadow-md rounded-lg mt-10 space-y-6">
+
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">
+      <%= post.new_record? ? "Create a New Blog Post" : "Edit Post" %>
+    </h2>
 
     <!-- Title -->
     <div>
-      <label for="post_title" class="block text-sm font-medium text-gray-700">Title</label>
-      <%= form.text_field :title, id: "post_title", class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" %>
+      <label for="post_title" class="block text-sm font-semibold text-gray-700 mb-1">Title</label>
+      <%= form.text_field :title, id: "post_title", class: "w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" %>
     </div>
 
     <!-- Summary -->
     <div>
-      <label for="post_summary" class="block text-sm font-medium text-gray-700">Short Description</label>
-      <%= form.text_field :summary, id: "post_summary", class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" %>
+      <label for="post_summary" class="block text-sm font-semibold text-gray-700 mb-1">Short Description</label>
+      <%= form.text_field :summary, id: "post_summary", class: "w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" %>
     </div>
 
     <!-- Body -->
     <div>
-      <label for="post_body" class="block text-sm font-medium text-gray-700">Body</label>
-      <%= form.text_area :body, id: "post_body", rows: 6, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" %>
+      <label for="post_body" class="block text-sm font-semibold text-gray-700 mb-1">Body</label>
+      <%= form.text_area :body, id: "post_body", rows: 6, class: "w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" %>
     </div>
 
     <!-- Image URL -->
     <div>
-      <label for="post_image_url" class="block text-sm font-medium text-gray-700">Image URL</label>
-      <%= form.text_field :image_url, id: "post_image_url", class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" %>
+      <label for="post_image_url" class="block text-sm font-semibold text-gray-700 mb-1">Image URL</label>
+      <%= form.text_field :image_url, id: "post_image_url", class: "w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" %>
     </div>
 
     <!-- User ID -->
     <div>
-      <label for="post_user_id" class="block text-sm font-medium text-gray-700">User ID</label>
-      <%= form.number_field :user_id, id: "post_user_id", class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" %>
-      <p class="text-xs text-gray-500 mt-1">Enter the ID of the user creating the post (e.g., 1).</p>
+      <label for="post_user_id" class="block text-sm font-semibold text-gray-700 mb-1">User ID</label>
+      <%= form.number_field :user_id, id: "post_user_id", class: "w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+      <p class="text-xs text-gray-500 mt-1">Enter the user ID (e.g., 1)</p>
     </div>
 
     <!-- Submit -->
-    <div>
-      <%= form.submit class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+    <div class="text-right">
+      <%= form.submit class: "bg-blue-600 text-white font-semibold py-2 px-6 rounded-md hover:bg-blue-700 transition-all" %>
     </div>
 
   </div>
