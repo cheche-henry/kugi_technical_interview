@@ -1,6 +1,12 @@
 <div class="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
   <!-- Top Banner or Image -->
-  <div class="h-48 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg mb-6"></div>
+  <% if @post.image_url.present? %>
+    <img src="<%= @post.image_url %>" alt="<%= @post.title %>" class="w-full h-48 object-cover rounded-lg mb-6">
+  <% else %>
+    <div class="h-48 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg mb-6 flex items-center justify-center text-white">
+      No Image
+    </div>
+  <% end %>
 
   <!-- Title -->
   <h1 class="text-3xl font-bold text-gray-900 mb-2"><%= @post.title %></h1>

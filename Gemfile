@@ -67,5 +67,6 @@ end
 gem "tailwindcss-rails", "~> 4.3"
 gem 'friendly_id', '~> 5.4.0'
 gem 'pagy'
+gem 'faker'
 
 

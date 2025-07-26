@@ -1,3 +1,5 @@
+require 'faker'
+
 puts "🧹 Clearing existing data..."
 Comment.delete_all
 Post.delete_all
@@ -17,11 +19,11 @@ users.each do |user|
       title: Faker::Book.title,
       summary: Faker::Lorem.sentence,
       body: Faker::Lorem.paragraphs(number: 5).join("\n\n"),
-      image_url: "https://placehold.co/600x400",
+      image_url: "https://picsum.photos/seed/#{SecureRandom.hex(8)}/600/400", # Random image
       user: user
     )
 
-    # Add 5 comments from random users
+    # Add 5 comments from random users (excluding the post's author)
     5.times do
       commenter = users.reject { |u| u == user }.sample
       post.comments.create!(
