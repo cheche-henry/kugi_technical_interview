@@ -1,12 +1,40 @@
-<%= link_to "← Back", posts_path, class: "text-blue-700 hover:underline mb-4 inline-block" %>
+<div class="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+  <!-- Top Banner or Image -->
+  <div class="h-48 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg mb-6"></div>
 
-<div class="bg-white p-6 rounded shadow">
-  <h1 class="text-3xl font-bold mb-2"><%= @post.title %></h1>
-  <p class="text-sm text-gray-500 mb-4">By <%= @post.user.name %></p>
+  <!-- Title -->
+  <h1 class="text-3xl font-bold text-gray-900 mb-2"><%= @post.title %></h1>
 
-  <% if @post.image_url.present? %>
-    <img src="<%= @post.image_url %>" alt="Blog Image" class="rounded mb-4 w-full max-h-96 object-cover">
-  <% end %>
+  <!-- Author Info -->
+  <p class="text-sm text-gray-500 mb-6">By <%= @post.user.name %></p>
 
-  <p class="text-gray-800 leading-relaxed"><%= simple_format(@post.body) %></p>
+  <!-- Body -->
+  <div class="prose max-w-none text-gray-800">
+    <%= simple_format(@post.body) %>
+  </div>
+
+  <!-- Comments Section -->
+  <div class="mt-12">
+    <h2 class="text-xl font-semibold text-gray-900 mb-4">Comments (<%= @post.comments.count %>)</h2>
+
+    <% @post.comments.each do |comment| %>
+      <div class="mb-4 border-b pb-3">
+        <p class="text-sm text-gray-600"><%= comment.user.name %> said:</p>
+        <p class="text-gray-800"><%= comment.body %></p>
+      </div>
+    <% end %>
+
+    <!-- Comment Form (we’ll turbo this later) -->
+    <div class="mt-6">
+      <%= form_with(model: [@post, Comment.new], local: true) do |f| %>
+        <div class="mb-4">
+          <%= f.label :body, "Add a Comment", class: "block text-sm font-medium text-gray-700" %>
+          <%= f.text_area :body, rows: 3, class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm" %>
+        </div>
+        <div>
+          <%= f.submit "Post Comment", class: "inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

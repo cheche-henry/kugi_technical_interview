@@ -9,7 +9,10 @@ end
 
   # GET /posts/1 or /posts/1.json
   def show
-  end
+   @post = Post.friendly.find(params[:id])
+  @comments = @post.comments.includes(:user)
+end
+
 
   # GET /posts/new
   def new
@@ -61,7 +64,7 @@ end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params.expect(:id))
+      @post = Post.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
