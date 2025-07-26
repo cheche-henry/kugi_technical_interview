@@ -1,21 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-  <title>RailsBlog</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+    <title>Rails Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
-</head>
+    <!-- Tailwind + Font Awesome -->
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", type: "module", "data-turbo-track": "reload" %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
+    <!-- Tailwind config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#3b82f6',
+              secondary: '#10b981',
+              accent: '#8b5cf6',
+              dark: '#1f2937',
+              light: '#f9fafb'
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+      body { font-family: 'Inter', sans-serif; }
+      .hero-gradient { background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); }
+      .card-hover { transition: all 0.3s ease; }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      .fade-in {
+        animation: fadeIn 0.5s ease-in;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+  </head>
 
   <body class="bg-gray-50">
-    <%= render 'shared/navbar' %>
+    <!-- Header/Navbar -->
+    <%= render "shared/navbar" %>
 
-    <%= yield %>
+    <!-- Page content -->
+    <main>
+      <%= yield %>
+    </main>
 
-    <%= render 'shared/footer' %>
+    <!-- Footer -->
+    <%= render "shared/footer" %>
   </body>
 </html>
