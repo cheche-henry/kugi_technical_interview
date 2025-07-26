@@ -1,0 +1,15 @@
+<nav class="bg-white shadow">
+  <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-4">
+      <a href="/" class="text-xl font-semibold text-gray-800 hover:text-gray-600">RailsBlog</a>
+      <%= link_to "Home", root_path, class: "text-gray-600 hover:text-blue-600 transition" %>
+      <%= link_to "Write Blog", new_post_path, class: "text-gray-600 hover:text-blue-600 transition" %>
+      <%= link_to "All Blogs", posts_path, class: "text-gray-600 hover:text-blue-600 transition" %>
+    </div>
+    <div class="flex space-x-4">
+      <a href="#" class="text-gray-600 hover:text-blue-600"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="text-gray-600 hover:text-blue-600"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="text-gray-600 hover:text-blue-600"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</nav>
