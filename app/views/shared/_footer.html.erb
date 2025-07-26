@@ -1,9 +1,51 @@
-<footer class="bg-white border-t mt-10">
-  <div class="max-w-7xl mx-auto px-6 py-8 text-center text-gray-600 text-sm">
-    <p>&copy; <%= Time.current.year %> RailsBlog. All rights reserved.</p>
-    <p class="mt-2">
-      <a href="#" class="hover:text-blue-600">Privacy Policy</a> &bull;
-      <a href="#" class="hover:text-blue-600">Terms of Service</a>
-    </p>
+<footer class="bg-dark text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <div class="flex items-center mb-4">
+          <i class="fas fa-blog text-primary text-2xl mr-2"></i>
+          <span class="text-xl font-bold">RailsBlog</span>
+        </div>
+        <p class="text-gray-400">A modern blogging platform built with Ruby on Rails, showcasing the power of web development.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Navigation</h3>
+        <ul class="space-y-2">
+          <li><%= link_to "Home", root_path, class: "text-gray-400 hover:text-white" %></li>
+          <li><%= link_to "Write Blog", new_post_path, class: "text-gray-400 hover:text-white" %></li>
+          <li><%= link_to "All Blogs", posts_path, class: "text-gray-400 hover:text-white" %></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Categories</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-white">Technology</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">Design</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">Business</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">Lifestyle</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Connect</h3>
+        <div class="flex space-x-4 mb-4">
+          <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-github"></i></a>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold mb-2">Subscribe to Newsletter</h4>
+          <div class="flex">
+            <input type="email" placeholder="Your email" class="px-3 py-2 text-gray-800 rounded-l-lg focus:outline-none w-full">
+            <button class="bg-primary hover:bg-blue-700 px-4 py-2 rounded-r-lg">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+      <p>&copy; <%= Time.current.year %> RailsBlog. All rights reserved.</p>
+    </div>
   </div>
 </footer>
