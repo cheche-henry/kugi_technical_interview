@@ -1,6 +1,4 @@
-// app/javascript/controllers/index.js
-import { Application } from "@hotwired/stimulus"
-import HelloController from "./hello_controller"
+import { application } from "./application"
+import PaginationController from "./pagination_controller"
 
-window.Stimulus = Application.start()
-Stimulus.register("hello", HelloController)
+application.register("pagination", PaginationController)
