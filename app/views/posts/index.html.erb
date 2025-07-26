@@ -1,58 +1,33 @@
-<section id="home" class="py-12">
-  <!-- Hero Section -->
-  <div class="hero-gradient text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-      <div class="text-center">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6">Share Your Thoughts With The World</h1>
-        <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
-          A modern blogging platform built with Ruby on Rails. Create, share, and connect with readers.
-        </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <%= link_to 'Start Writing', new_post_path, class: "inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-100" %>
-          <%= link_to 'Explore Blogs', posts_path, class: "inline-flex items-center px-6 py-3 border border-white text-base font-medium rounded-md text-white bg-transparent hover:bg-white hover:text-primary" %>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+  <h2 class="text-3xl font-bold tracking-tight text-gray-900 mb-6">All Blog Posts</h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% @posts.each do |post| %>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <!-- Color block or image placeholder -->
+        <div class="h-32 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
+
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3"><%= post.title %></h3>
+          <p class="text-gray-600 mb-4"><%= truncate(post.body, length: 100) %></p>
+
+          <div class="flex justify-between items-center">
+            <span class="inline-flex items-center text-sm text-gray-500">
+              <i class="far fa-user mr-1"></i>
+              <%= post.user.name %>
+            </span>
+
+            <span class="inline-flex items-center text-sm text-gray-500">
+              <i class="far fa-comment mr-1"></i>
+              <%= post.comments.count %> Comments
+            </span>
+          </div>
+
+          <div class="mt-4 text-right">
+            <%= link_to 'Read More →', post_path(post), class: "text-indigo-600 hover:text-indigo-800 text-sm font-medium" %>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- Featured Blogs -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold text-gray-900 mb-4">Featured Blogs</h2>
-      <p class="text-xl text-gray-600 max-w-2xl mx-auto">Discover the latest and most popular posts from our community</p>
-    </div>
-
-    <% if @posts.any? %>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <% @posts.each do |post| %>
-          <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-            <!-- Placeholder gradient banner -->
-            <div class="h-48 bg-gradient-to-r from-blue-400 to-purple-500"></div>
-            <div class="p-6">
-              <div class="flex items-center text-sm text-gray-500 mb-3">
-                <span class="font-medium text-gray-900"><%= post.user.name %></span>
-                <span class="mx-2">•</span>
-                <span><%= post.created_at.strftime("%b %d, %Y") %></span>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-3"><%= post.title %></h3>
-              <p class="text-gray-600 mb-4"><%= truncate(post.body, length: 100) %></p>
-              <div class="flex justify-between items-center">
-                <span class="inline-flex items-center text-sm text-gray-500">
-                  <i class="far fa-comment mr-1"></i>
-                  <%= pluralize(post.comments.count, 'comment') %>
-                </span>
-                <%= link_to 'Read more →', post_path(post), class: "text-primary hover:text-blue-700 font-medium" %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    <% else %>
-      <p class="text-center text-gray-500">No posts available yet. Be the first to create one!</p>
     <% end %>
-
-    <div class="text-center mt-12">
-      <%= link_to 'View All Blogs', posts_path, class: "inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50" %>
-    </div>
   </div>
-</section>
+</div>
